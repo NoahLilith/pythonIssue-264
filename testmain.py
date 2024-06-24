@@ -11,7 +11,7 @@ class YoubikeApp:
         # 載入 YouBike 資料
         self.ubike_data = load_data()
 
-        # 設定 Treeview
+        # 設定 Treeview 
         self.tree = ttk.Treeview(self.root, columns=('sna', 'sarea', 'ar', 'lng', 'lat', 'mday', 'updateTime', 'act', 'total', 'rent_bikes', 'return_bikes'), show='headings')
         self.tree.heading('sna', text='站名')
         self.tree.heading('sarea', text='區域')

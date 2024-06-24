@@ -45,7 +45,7 @@ def load_data() -> list[Info]:
         all_data: list[dict] = __download_json()
     except Exception as error:
         print(error)
-        return []
+        return [] 
 
     try:
         youbike_data = [Info(**item) for item in all_data]
