@@ -226,6 +226,7 @@ def get_geolocation(api_key, wifi_access_points):
     location_data = response.json()
     return location_data['location']
 def main():
+    global mydata1
     def on_closing():
         print("手動關閉視窗")
         window.destroy()
