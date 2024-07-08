@@ -60,6 +60,10 @@ def index():
 
     all_datas = dload_json()
     
+    # 計算每個站點與目前位置的距離，並按距離由近到遠排序
+    all_datas_sorted = sorted(all_datas, key=lambda x: abs(x.get('latitude', 0) - latitude) + abs(x.get('longitude', 0) - longitude))
+    
+    # 只保留最近的三個站點資料
     filtered_data = [
         {
             'sna': dat.get('sna', '未知'),
@@ -70,7 +74,7 @@ def index():
             'rent_bikes': dat.get('available_rent_bikes', 0),
             'retuen_bikes': dat.get('available_return_bikes', 0)
         }
-        for dat in all_datas if abs(dat.get('latitude', 0) - latitude) < 0.00350 and abs(dat.get('longitude', 0) - longitude) < 0.00350
+        for dat in all_datas_sorted[:3]  # 取前三個最接近的站點資料
     ]
     
     return render_template('index.html', data=filtered_data)
